@@ -10,10 +10,6 @@ from config import config
 
 class GenerateData:
     def __init__(self, trust_files: bool = True):
-        # self.order_file = 'test_order20161101'
-        # self.gps_file = 'gps'
-        # self.order2vector_file = 'order2vector_20161101'
-        # self.data_path = 'data_20161101'
 
         self.order_data_files = config.order_data_files
         self.gps_data_files = config.gps_data_files
@@ -27,8 +23,7 @@ class GenerateData:
 
         self.trust_files = trust_files
 
-    # 'order_id', 'start_t', 'end_t', 'start_lng', 'start_lat', 'end_lng', 'end_lat'
-    # 生成order后记得最上面一行删掉
+  
     def generate_order(self):
         print('Generate Order Set')
         gps_labels = ['driver_id', 'order_id', 'time', 'lng', 'lat']
@@ -116,7 +111,6 @@ class GenerateData:
                                'start_lat', 'end_lng', 'end_lat']
                 o2v_names = ['order_id', 'start_vector']
                 all_csv = []
-                # 需要循环输入orderfile、order2vectorfile
                 for order2vector_file, order_file in \
                         tqdm(zip(self.order2vector_files, self.order_data_files)):
                     order_csv = pd.read_csv(order_file, names=order_names)
@@ -125,7 +119,6 @@ class GenerateData:
                             order2vector_file))
                         self.calculate_order_start_vector()
                     order2vector = pd.read_csv(order2vector_file)
-
                     order_csv['vector'] = self.__get_bearing(order_csv)
                     f = pd.merge(left=order_csv, right=order2vector, how='inner',
                                  left_on='order_id', right_on='order_id')
@@ -200,7 +193,4 @@ class GenerateData:
 
 if __name__ == '__main__':
     data = GenerateData()
-    # data.generate_order() 单独用来生成日期order的函数
-    # data.calculate_order_start_vector()
-    # data.data
     data._split_train_test_data()
