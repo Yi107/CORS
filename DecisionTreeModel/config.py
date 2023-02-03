@@ -5,7 +5,7 @@ class Config:
         self.test_x_path = 'testx.pkl'
         self.test_y_path = 'testy.pkl'
         self.decision_tree_path = 'decision_tree.model'
-        self.data_path = 'data9.csv'
+        self.data_path = 'data.csv'
         self.train_data_ratio = 0.8
 
     @property
