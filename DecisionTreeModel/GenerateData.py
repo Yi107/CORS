@@ -9,8 +9,12 @@ from config import config
 
 
 class GenerateData:
-    #trust_files means whether to use the existed files. 
+    
     def __init__(self, trust_files: bool = True):
+        '''
+        Args:
+            trust_files:bool: Means whether use the existed order2vector_data_files and data files or generate new files.
+        '''
 
         self.order_data_files = config.order_data_files
         self.gps_data_files = config.gps_data_files
@@ -69,6 +73,9 @@ class GenerateData:
         return vector
 
     def calculate_order_start_vector(self):
+        '''
+        Calculate the current driving angle for each order based on gps data
+        '''
         print('Calculating start_vector of orders')
         gps_labels = ['driver_id', 'order_id', 'time', 'lng', 'lat']
         for order2vector_file, gps_file in \
@@ -99,6 +106,9 @@ class GenerateData:
 
     @property
     def data(self):
+        '''
+        Generate overall data with orders details, their current driving angle, and their destination angle.
+        '''
         try:
             return getattr(self, '_data')
         except AttributeError:
@@ -131,8 +141,10 @@ class GenerateData:
             return self._data
 
     def _split_train_test_data(self):
+        '''
+        Split the training data and test data based on the ratio.
+        '''
         feature_columns = ['start_t', 'start_lng', 'start_lat', 'start_vector']
-        # feature_columns = ['start_lng', 'start_lat', 'start_vector']
         label_column = 'vector'
         x = self.data[feature_columns]
         y = self.data[label_column]
