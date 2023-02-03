@@ -2,7 +2,7 @@ import pickle
 
 import numpy as np
 import pandas as pd
-from main import GenerateData
+from GenerateData import GenerateData
 from Regresseors import DecisionTreeRegressor
 from config import config
 import seaborn as sns
