@@ -9,6 +9,7 @@ from config import config
 
 
 class GenerateData:
+    #trust_files means whether to use the existed files. 
     def __init__(self, trust_files: bool = True):
 
         self.order_data_files = config.order_data_files
