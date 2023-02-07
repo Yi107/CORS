@@ -13,6 +13,6 @@ Python 3.9 and Wolfram application.
 
 Run "GenerateData.py" in **DecisionTreeModel** folder to generate the training and test data of generating decision tree model.
 
-Run "DecisionTree.py" in **DecisionTreeModel** folder to generate the decision tree model used in D-CORS
+Run "DecisionTree.py" in **DecisionTreeModel** folder to generate the decision tree model used in D-CORS.
 
 Run "Simulator.py" in **SimulateCORS** folder to perform R-CORS and D-CORS proposed in the paper.
